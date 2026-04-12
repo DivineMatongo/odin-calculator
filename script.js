@@ -57,7 +57,7 @@ function equals() {
     }
 }
 
-function operator(symbol) {
+function addOperator(symbol) {
     if (screenLine2.textContent.length === 0) {
         return;
     } else if (screenLine1.textContent.length > 0) {
