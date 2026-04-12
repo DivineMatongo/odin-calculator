@@ -67,17 +67,19 @@ function addOperator(symbol) {
     screenLine2.textContent = "";
 }
 
-/*  Universal Event Handler("click", {
-        IF button pressed is [1-9] THEN
-            appendToScreen([1-9])
-        ELSE IF button pressed is . THEN
-            addPeriod()
-        ELSE IF button pressed is [operator] THEN
-            operator(symbol)
-        ELSE IF button pressed is equals THEN
-            equals()
-        ELSE IF button pressed is [backspace] THEN
-            backspace()
-        ELSE IF button pressed is [CA] THEN
-            clear line1 and line2
-    }) */
+document.querySelector("body").addEventListener(("click"), (e) => {
+    if (e.target.classList.contains("number")) {
+        appendToScreen(e.target.textContent);
+    } else if (e.target.id === "period") {
+        addPeriod();
+    } else if (e.target.classList.contains("operator")) {
+        addOperator(e.target.textContent);
+    } else if (e.target.id === "equals") {
+        equals();
+    } else if (e.target.id === "backspace") {
+        backSpace();
+    } else if (e.target.id === "clear-screen") {
+        screenLine1.textContent = "";
+        screenLine2.textContent = "";
+    }
+});
