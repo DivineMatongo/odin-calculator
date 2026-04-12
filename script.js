@@ -63,6 +63,16 @@ function equals() {
         Append appropriate symbol to line1 with space
         Clear line2
     } */
+function operator(symbol) {
+    if (screenLine2.textContent.length === 0) {
+        return;
+    }
+    if (screenLine1.textContent.length > 0) {
+        equals();
+    }
+    screenLine1.textContent = `${screenLine2.textContent} ${symbol}`;
+    screenLine2.textContent = "";
+}
 
 /*  Universal Event Handler("click", {
         IF button pressed is [1-9] THEN
