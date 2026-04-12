@@ -1,12 +1,17 @@
 const screenLine1 = document.querySelector("#line1");
 const screenLine2 = document.querySelector("#line2");
+let showingResult = false;
 
 function appendToScreen(text) {
     screenLine2.textContent += text;
 }
 
 function addPeriod() {
-    if (!screenLine2.textContent.includes(".")) {
+    if (screenLine2.textContent.includes(".")) {
+        return;
+    } else if (screenLine2.textContent.length === 0) {
+        screenLine2.textContent = "0.";
+    } else {
         appendToScreen(".");
     }
 }
