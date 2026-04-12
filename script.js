@@ -11,12 +11,23 @@ function addPeriod() {
     }
 }
 
+function backSpace() {
+    if (screenLine2.textContent.length > 0) {
+        screenLine2.textContent = screenLine2.textContent.slice(
+            start=0, end=(screenLine2.textContent.length - 1)
+        );
+    } else if (screenLine1.textContent.length > 0) {
+        screenLine2.textContent = screenLine1.textContent
+            .split(" ")
+            [0];
+        screenLine1.textContent = "";
+    }
+}
+
 /*  FUNCTION calculate(expression -> "a * b") {
         split string at spaces
         Combine operands with required operation and return result
     } */
-
-//  FUNCTION backSpace() {}
 
 /*  FUNCTION equals() 
         IF line1 is empty THEN exit
