@@ -24,10 +24,6 @@ function backSpace() {
     }
 }
 
-/*  FUNCTION calculate(expression -> "a * b") {
-        split string at spaces
-        Combine operands with required operation and return result
-    } */
 function calculate(expression) {
     splitExpr = expression.split(" ");
     a = Number(splitExpr[0]);
@@ -48,13 +44,16 @@ function calculate(expression) {
     }
 }
 
-/*  FUNCTION equals() 
-        IF line1 is empty THEN exit
-        IF line1 ends with . THEN add 0
-        Grab number and symbol on line1 and combine it with number on line2
-        Show result on line2
-        Clear line1
-    } */
+function equals() {
+    if (screenLine1.textContent.length > 0) {
+        if (screenLine1.textContent[screenLine1.textContent.length-1] === ".") {
+            screenLine1.textContent += "0";
+        }
+        let result = calculate(screenLine1.textContent + " " + screenLine2.textContent);
+        screenLine1.textContent = "";
+        screenLine2.textContent = result;
+    }
+}
 
 /*  FUNCTION operator(symbol) {
         IF line1 is not empty THEN
