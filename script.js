@@ -45,7 +45,9 @@ function calculate(expression) {
 }
 
 function equals() {
-    if (screenLine1.textContent.length > 0) {
+    if (screenLine2.textContent.length === 0) {
+        return
+    } else if (screenLine1.textContent.length > 0) {
         if (screenLine1.textContent[screenLine1.textContent.length-1] === ".") {
             screenLine1.textContent += "0";
         }
@@ -55,19 +57,10 @@ function equals() {
     }
 }
 
-/*  FUNCTION operator(symbol) {
-        IF line1 is not empty THEN
-            equals()
-        ELSE
-            Move number entered from line2 to line1
-        Append appropriate symbol to line1 with space
-        Clear line2
-    } */
 function operator(symbol) {
     if (screenLine2.textContent.length === 0) {
         return;
-    }
-    if (screenLine1.textContent.length > 0) {
+    } else if (screenLine1.textContent.length > 0) {
         equals();
     }
     screenLine1.textContent = `${screenLine2.textContent} ${symbol}`;
