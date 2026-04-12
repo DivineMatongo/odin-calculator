@@ -28,6 +28,25 @@ function backSpace() {
         split string at spaces
         Combine operands with required operation and return result
     } */
+function calculate(expression) {
+    splitExpr = expression.split(" ");
+    a = Number(splitExpr[0]);
+    operator = splitExpr[1];
+    b = Number(splitExpr[2]);
+
+    switch (operator) {
+        case "+":
+            return a + b;
+        case "-":
+            return a - b;
+        case "×":
+        case "*":
+            return a * b;
+        case "/":
+        case "÷":
+            return a / b;
+    }
+}
 
 /*  FUNCTION equals() 
         IF line1 is empty THEN exit
