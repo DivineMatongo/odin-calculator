@@ -3,13 +3,22 @@ const screenLine2 = document.querySelector("#line2");
 let showingResult = false;
 
 function appendToScreen(text) {
+    if (showingResult) {
+        screenLine2.textContent = "";
+        showingResult = false;
+    }
     screenLine2.textContent += text;
 }
 
 function addPeriod() {
-    if (screenLine2.textContent.includes(".")) {
-        return;
-    } else if (screenLine2.textContent.length === 0) {
+    if (screenLine2.textContent.includes(".")) return;
+    
+    if (showingResult) {
+        screenLine2.textContent = "";
+        showingResult = false;
+    }
+    
+    if (screenLine2.textContent.length === 0) {
         screenLine2.textContent = "0.";
     } else {
         appendToScreen(".");
@@ -17,7 +26,11 @@ function addPeriod() {
 }
 
 function backSpace() {
-    if (screenLine2.textContent.length > 0) {
+    if (showingResult) {
+        screenLine2.textContent = "";
+        showingResult = false;
+
+    } else if (screenLine2.textContent.length > 0) {
         screenLine2.textContent = screenLine2.textContent.slice(
             start=0, end=(screenLine2.textContent.length - 1)
         );
@@ -51,7 +64,7 @@ function calculate(expression) {
 
 function equals() {
     if (screenLine2.textContent.length === 0) {
-        return
+        return;
     } else if (screenLine1.textContent.length > 0) {
         if (screenLine1.textContent[screenLine1.textContent.length-1] === ".") {
             screenLine1.textContent += "0";
@@ -59,6 +72,7 @@ function equals() {
         let result = calculate(screenLine1.textContent + " " + screenLine2.textContent);
         screenLine1.textContent = "";
         screenLine2.textContent = result;
+        showingResult = true;
     }
 }
 
@@ -68,6 +82,7 @@ function addOperator(symbol) {
     } else if (screenLine1.textContent.length > 0) {
         equals();
     }
+    showingResult = false;
     screenLine1.textContent = `${screenLine2.textContent} ${symbol}`;
     screenLine2.textContent = "";
 }
