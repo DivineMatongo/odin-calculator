@@ -70,9 +70,13 @@ function equals() {
             screenLine1.textContent += "0";
         }
         let result = calculate(screenLine1.textContent + " " + screenLine2.textContent);
-        screenLine1.textContent = "";
-        screenLine2.textContent = result;
-        showingResult = true;
+        if (!isFinite(result) || isNaN(result)) {
+            throw new Error("Attempted to divide by 0");
+        } else {
+            screenLine1.textContent = "";
+            screenLine2.textContent = result;
+            showingResult = true;
+        }
     }
 }
 
@@ -80,7 +84,12 @@ function addOperator(symbol) {
     if (screenLine2.textContent.length === 0) {
         return;
     } else if (screenLine1.textContent.length > 0) {
-        equals();
+        try {
+            equals();
+        } catch (e) {
+            console.error(e);
+            return;
+        }
     }
     showingResult = false;
     screenLine1.textContent = `${screenLine2.textContent} ${symbol}`;
@@ -95,7 +104,12 @@ document.querySelector("body").addEventListener(("click"), (e) => {
     } else if (e.target.classList.contains("operator")) {
         addOperator(e.target.textContent);
     } else if (e.target.id === "equals") {
-        equals();
+        try {
+            equals();
+        } catch (e) {
+            console.error(e);
+            return;
+        }
     } else if (e.target.id === "backspace") {
         backSpace();
     } else if (e.target.id === "clear-screen") {
