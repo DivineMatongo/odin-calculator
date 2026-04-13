@@ -54,6 +54,7 @@ function calculate(expression) {
         case "-":
             return a - b;
         case "×":
+        case "x":
         case "*":
             return a * b;
         case "/":
@@ -96,7 +97,7 @@ function addOperator(symbol) {
     screenLine2.textContent = "";
 }
 
-document.querySelector("body").addEventListener(("click"), (e) => {
+document.addEventListener(("click"), (e) => {
     if (e.target.classList.contains("number")) {
         appendToScreen(e.target.textContent);
     } else if (e.target.id === "period") {
@@ -108,7 +109,6 @@ document.querySelector("body").addEventListener(("click"), (e) => {
             equals();
         } catch (e) {
             console.error(e);
-            return;
         }
     } else if (e.target.id === "backspace") {
         backSpace();
@@ -117,3 +117,24 @@ document.querySelector("body").addEventListener(("click"), (e) => {
         screenLine2.textContent = "";
     }
 });
+
+document.addEventListener("keydown", (e) => {
+    if ("0123456789".includes(e.key)) {
+        appendToScreen(e.key);
+    } else if (e.key === ".") {
+        addPeriod();
+    } else if ("+-*/x".includes(e.key)) {
+        addOperator(e.key);
+    } else if (e.key === "=" || e.key === "Enter") {
+        try {
+            equals();
+        } catch (e) {
+            console.error(e);
+        }
+    } else if (e.key === "Backspace" || e.key === "Delete") {
+        backSpace();
+    } else if (e.key === "Escape") {
+        screenLine1.textContent = "";
+        screenLine2.textContent = "";
+    }
+})
