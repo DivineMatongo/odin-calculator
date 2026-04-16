@@ -1,7 +1,7 @@
 body {
     background-color: black;
     background-image: url("images/night-sky.jpg");
-    background-size: 200%;
+    background-size: cover;
     background-repeat: repeat;
     display: flex;
     flex-direction: column;
