@@ -147,7 +147,8 @@ document.addEventListener(("click"), (e) => {
             // Division by zero attempted
             console.error(e);
         }
-    } else if (e.target.id === "backspace") {
+    } else if (e.target.id === "backspace" ||
+               e.target.parentElement.id === "backspace") {
         // Backspace button was pressed
         backSpace();
     } else if (e.target.id === "clear-screen") {
