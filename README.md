@@ -9,5 +9,5 @@ ATTRIBUTIONS
 1. The dark theme designed for the calculator was inspired by the Windows 11 built-in Calculator theme.
    I needed a simple but modern design to practice my CSS and HTML knowledge.
    
-3. The background image used for the calculator was obtained from freepik on a free license.<br>
+2. The background image used for the calculator was obtained from freepik on a free license.<br>
    Source: https://www.freepik.com/free-photo/panoramic-view-sunset-night_13637281.htm  
