@@ -1,7 +1,8 @@
 // Top and bottom lines of the screen
 const screenLine1 = document.querySelector("#line1");
 const screenLine2 = document.querySelector("#line2");
-// Holds true if the result of a calculation is being shown on the screen
+
+// True when the number on the screen is the result of a previous calculation
 let showingResult = false;
 
 /**

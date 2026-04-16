@@ -28,7 +28,7 @@ h1 {
 
 .screen-container {
     margin: 5px 0px;
-    
+    overflow: auto hidden;   
 }
 
 .screen {
